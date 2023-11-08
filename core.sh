@@ -125,6 +125,7 @@ function htmx_page() {
   <!doctype html>
   <html>
   <head>
+  <title>Issue Roulette</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8">
   ${STYLE_TEXT}
