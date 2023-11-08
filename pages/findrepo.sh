@@ -7,3 +7,4 @@ REPO_OWNER="${BASH_REMATCH[1]}"
 
 header HX-Redirect "/$REPO_OWNER/$REPO_NAME"
 end_headers
+end_headers
