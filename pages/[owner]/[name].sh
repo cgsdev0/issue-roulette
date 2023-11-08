@@ -6,8 +6,8 @@ htmx_page <<-EOF
   <a href="/"><h1 class="text-blue-500 text-4xl mt-3 mb-3">${PROJECT_NAME}</h1></a>
   <p>Want to contribute to <a href="https://github.com/${REPO_OWNER}/${REPO_NAME}">${REPO_OWNER}/${REPO_NAME}</a>, but don't know where to start? Spin the roulette to find a random issue!</p>
   <h2>Filter by Labels</h2>
+  <div hx-get="/labels/${REPO_OWNER}/${REPO_NAME}" hx-trigger="load" hx-swap="outerHTML">Loading...</div>
   <form hx-target="#issue" hx-get="/spin" hx-vals='{"name": "${REPO_NAME}", "owner": "${REPO_OWNER}"}'>
-  <div hx-get="/labels/${REPO_OWNER}/${REPO_NAME}" hx-trigger="load"></div>
   <div class="signin">
   <button class="spinbtn">
 
