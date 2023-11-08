@@ -17,3 +17,5 @@ save_session
 header Location '/'
 end_headers
 end_headers
+
+return $(status_code 302)
