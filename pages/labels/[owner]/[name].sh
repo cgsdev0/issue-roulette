@@ -19,6 +19,8 @@ CURL_RESPONSE="$(curl -SsL \
 
 MSG="$(echo "$CURL_RESPONSE" | jq -r '.message')"
 if [[ "$MSG" == "Bad credentials" ]]; then
+  SESSION[access_token]=''
+  save_session
   header HX-Redirect '/'
   end_headers
   end_headers
