@@ -4,7 +4,7 @@ REPO_OWNER="${PATH_VARS[owner]}"
 REPO_NAME="${PATH_VARS[name]}"
 
 ACCESS_TOKEN="${SESSION[access_token]}"
-if [[ "$ACCESS_TOKEN" ]]; then
+if [[ -z "$ACCESS_TOKEN" ]]; then
   header HX-Redirect '/'
   end_headers
   end_headers

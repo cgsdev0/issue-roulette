@@ -5,7 +5,7 @@ REPO_OWNER="${QUERY_PARAMS[owner]}"
 LABELS="${QUERY_PARAMS[labels]}"
 
 ACCESS_TOKEN="${SESSION[access_token]}"
-if [[ "$ACCESS_TOKEN" ]]; then
+if [[ -z "$ACCESS_TOKEN" ]]; then
   header HX-Redirect '/'
   end_headers
   end_headers
