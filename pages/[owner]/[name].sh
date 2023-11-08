@@ -7,7 +7,7 @@ htmx_page <<-EOF
   <p>Want to contribute to <a href="https://github.com/${REPO_OWNER}/${REPO_NAME}">${REPO_OWNER}/${REPO_NAME}</a>, but don't know where to start? Spin the roulette to find a random issue!</p>
   <h2>Filter by Labels</h2>
   <form hx-target="#issue" hx-get="/spin" hx-vals='{"name": "${REPO_NAME}", "owner": "${REPO_OWNER}"}'>
-  $(component "/labels/${REPO_OWNER}/${REPO_NAME}")
+  <div hx-get="/labels/${REPO_OWNER}/${REPO_NAME}"></div>
   <div class="signin">
   <button class="spinbtn">
 
