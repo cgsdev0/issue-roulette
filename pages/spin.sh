@@ -1,7 +1,18 @@
+# headers
 
 REPO_NAME="${QUERY_PARAMS[name]}"
 REPO_OWNER="${QUERY_PARAMS[owner]}"
 LABELS="${QUERY_PARAMS[labels]}"
+
+ACCESS_TOKEN="${SESSION[access_token]}"
+if [[ "$ACCESS_TOKEN" ]]; then
+  header HX-Redirect '/'
+  end_headers
+  return $(status_code 302)
+fi
+
+end_headers
+
 
 if [[ -z "$LABELS" ]]; then
   URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?per_page=100&sort=updated&direction=desc"
@@ -10,7 +21,7 @@ else
 fi
 ISSUE="$(curl -SsL \
 -H "Accept: application/vnd.github+json" \
--H "Authorization: Bearer ${SESSION[access_token]}" \
+-H "Authorization: Bearer $ACCESS_TOKEN" \
 -H "X-GitHub-Api-Version: 2022-11-28" \
 "$URL" \
 | jq -c '.[] | select(.pull_request == null) | { comments, created_at, body, reactions, html_url, title, labels: .labels | map(.name) }' | shuf -n1)"
