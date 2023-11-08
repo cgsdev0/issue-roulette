@@ -12,9 +12,15 @@ ACCESS_TOKEN="${FORM_DATA[access_token]}"
 
 SESSION[access_token]="$ACCESS_TOKEN"
 
+REDIR="${SESSION[redirect]}"
+
+# haha its the slanty face :-/
+REDIR="${REDIR:-/}"
+
+SESSION[redirect]=''
 save_session
 
-header Location '/'
+header Location "$REDIR"
 end_headers
 end_headers
 

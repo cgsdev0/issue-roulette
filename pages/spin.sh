@@ -6,6 +6,8 @@ LABELS="${QUERY_PARAMS[labels]}"
 
 ACCESS_TOKEN="${SESSION[access_token]}"
 if [[ -z "$ACCESS_TOKEN" ]]; then
+  SESSION['redirect']="/$REPO_OWNER/$REPO_NAME"
+  save_session
   header HX-Redirect '/'
   end_headers
   end_headers
@@ -27,6 +29,7 @@ CURL_RESPONSE="$(curl -SsL \
 MSG="$(echo "$CURL_RESPONSE" | jq -r '.message')"
 if [[ "$MSG" == "Bad credentials" ]]; then
   SESSION[access_token]=''
+  SESSION['redirect']="/$REPO_OWNER/$REPO_NAME"
   save_session
   header HX-Redirect '/'
   end_headers
