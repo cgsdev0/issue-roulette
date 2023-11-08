@@ -1,5 +1,5 @@
 
-CURL_RESPONSE="$(curl -Ss -X POST "https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${QUERY_PARAMS[code]}&redirect_uri=http://localhost:3035/oauth")"
+CURL_RESPONSE="$(curl -Ss -X POST "https://github.com/login/oauth/access_token?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${QUERY_PARAMS[code]}&redirect_uri=https://github2.com/oauth")"
 
 while read -r -d '&' line; do
   FORM_DATA["${line%%=*}"]=$(urldecode "${line#*=}")
