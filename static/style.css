@@ -1,9 +1,73 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+html,
 body {
-  padding: 0 40px;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Verdana;
+  background-color: #ccc;
+}
+pre {
+  overflow-x: scroll;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input {
+  font-family: Verdana;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+#wrapper {
+  display: block;
+  box-sizing: border-box;
+  padding: 24px;
+  min-height: 100dvh;
+  max-width: 800px;
+  margin: auto;
+  background-color: white;
+}
+
+.labelbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  user-select: none;
+}
+.label span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 16px;
+  border-width: 1px;
+  border-style: solid;
+  min-width: 50px;
+  text-align: center;
+}
+
+.label {
+  opacity: 40%;
+}
+.label:has(input:checked) {
+  opacity: 100%;
+}
+.label:has(input:checked) span {
+  padding: 6px;
+  border-width: 3px;
+}
+
+.label input[type="checkbox"] {
+  display: none;
 }
 #signature {
   position: absolute;
@@ -31,12 +95,105 @@ body {
   display: inline;
 }
 
-#form {
+.github {
   display: flex;
-  max-width: 400px;
-  flex-direction: column;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 28rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffffff;
+  background-color: #6b7280;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  gap: 10px;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.github:hover {
+  background-color: #374151;
 }
 
-#count {
+.signin {
+  width: 100%;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  gap: 8px;
+  height: 46px;
+  width: 120px;
+  border: none;
+  background: #5e41de33;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.spinbtn span {
+  line-height: 30px;
   font-size: 24px;
+  color: #5d41de;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.spinbtn:hover {
+  background: #5e41de4d;
+}
+
+.spinbtn:active {
+  background-color: #5e41de80;
+}
+.spinbtn:active span {
+  color: white;
+}
+.spinbtn:active svg path {
+  stroke: white;
+}
+
+/* .spinbtn:hover svg { */
+/*   animation: spin 1s linear infinite; */
+/* } */
+
+.htmx-request .spinbtn svg {
+  animation: spin 1s linear infinite;
+}
+
+.htmx-request .spinbtn {
+  background-color: #ccc;
+}
+.htmx-request .spinbtn span {
+  color: #888;
+}
+.htmx-request .spinbtn svg path {
+  stroke: #888;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

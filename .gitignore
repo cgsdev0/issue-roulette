@@ -3,4 +3,5 @@ pubsub/
 uploads/
 
 static/tailwind.css
+sessions/
 .secrets
