@@ -55,13 +55,12 @@ a:hover {
   text-align: center;
 }
 
-.label {
+.label span {
   opacity: 40%;
 }
-.label:has(input:checked) {
+
+.label > input[type="checkbox"]:checked + span {
   opacity: 100%;
-}
-.label:has(input:checked) span {
   padding: 6px;
   border-width: 3px;
 }
@@ -69,6 +68,7 @@ a:hover {
 .label input[type="checkbox"] {
   display: none;
 }
+
 #signature {
   position: absolute;
   z-index: 100;
